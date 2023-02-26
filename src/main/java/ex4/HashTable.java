@@ -46,12 +46,12 @@ public class HashTable {
 
     private void eliminarEntry(HashEntry entry, int hash) {
         if (entry.prev == null) {
-            entries[hash] = entry.next; //esborrar element únic (no col·lissió)
+            entries[hash] = entry.next;
         } else {
             if (entry.next != null) {
-                entry.next.prev = entry.prev; //esborrem temp, per tant actualitzem l'anterior al següent
+                entry.next.prev = entry.prev;
             }
-            entry.prev.next = entry.next; //esborrem temp, per tant actualitzem el següent de l'anterior
+            entry.prev.next = entry.next;
         }
     }
 

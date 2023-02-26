@@ -43,7 +43,6 @@ public class HashTable {
                 }
                 temp = temp.next;
             }
-            // Si no se encuentra un elemento con la misma clave, insertar al final de la lista
             temp = entries[hash];
             while (temp.next != null) {
                 temp = temp.next;
@@ -65,16 +64,12 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            //while( !temp.key.equals(key))
-            //  temp = temp.next;
-
             while (temp!=null){
                 if (temp.key.equals(key)){
                     return temp.value;
                 }
                 temp=temp.next;
             }
-            //return temp.value;
         }
 
         return null;
@@ -92,11 +87,11 @@ public class HashTable {
                 temp = temp.next;
             if(temp!=null){
                 if(temp.prev == null){
-                    entries[hash] = temp.next;//esborrar element únic (no col·lissió)
+                    entries[hash] = temp.next;
                 }
                 else{
-                    if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
-                    temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
+                    if(temp.next != null) temp.next.prev = temp.prev;
+                    temp.prev.next = temp.next;
                 }
                 ITEMS--;
             }

@@ -256,21 +256,26 @@ public class Tests {
 
     @org.junit.jupiter.api.Test
     void test_drop_ElementoNoExisteBucketLlenoNoExistePosicionOcupadaPorOtraQueColisiona(){
-        HashTable hashtable = new HashTable();
-        hashtable.put("1","elemento1");
-        hashtable.drop("12");
+        HashTable hashTable = new HashTable();
+        hashTable.put("1","elemento1");
+        hashTable.drop("12");
         String expected = "\n bucket[1] = [1, elemento1]";
-        Assertions.assertEquals(expected,hashtable.toString());
+        Assertions.assertEquals(expected,hashTable.toString());
+        Assertions.assertEquals(1,hashTable.count());
+        Assertions.assertEquals(16,hashTable.size());
     }
 
     @org.junit.jupiter.api.Test
     void test_drop_ElementoNoExistePosicionOcupadaPor3ElementosColisionants(){
-        HashTable hashtable = new HashTable();
-        hashtable.put("1","elemento1");
-        hashtable.put("12","elemento2");
-        hashtable.put("23","elemento3");
-        hashtable.drop("34");
+        HashTable hashTable = new HashTable();
+        hashTable.put("1","elemento1");
+        hashTable.put("12","elemento2");
+        hashTable.put("23","elemento3");
+        hashTable.drop("34");
         String expected = "\n bucket[1] = [1, elemento1] -> [12, elemento2] -> [23, elemento3]";
-        Assertions.assertEquals(expected,hashtable.toString());
+        Assertions.assertEquals(expected,hashTable.toString());
+
+        Assertions.assertEquals(3,hashTable.count());
+        Assertions.assertEquals(16,hashTable.size());
     }
 }
